@@ -53,7 +53,6 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.isLoad=true;
           this.$http.post("/login",this.ruleForm).then(res=>{
             console.log(res);
             const jwt=res.headers['authorization'];
@@ -62,15 +61,16 @@ export default {
             console.log(jwt);
             this.$store.commit("SET_TOKEN",jwt);
             this.$store.commit("SET_USERINFO",userInfo);
-            this.isLoad=false;
             if(this.$store.getters.getUser!=null){
               this.$router.push("/blogsAll")
             }
           })
         } else {
+
           console.log('error submit!!');
           return false;
         }
+
       });
     },
     resetForm(formName) {

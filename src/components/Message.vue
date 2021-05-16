@@ -64,6 +64,10 @@
         <div class="copyright">
           <div class="info">
             <div class="contact">
+              <a href="blogsAll"  title="博文"><i class="fa fa-book"></i></a>
+              <a href="message"  title="留言"><i class="fa fa-comments"></i></a>
+              <a href="log"  title="日志"><i class="fa fa-tag"></i></a>
+              <a href="about"  title="关于"><i class="fa fa-info-circle"></i></a>
               <a href="https://wpa.qq.com/msgrd?v=3&uin=319991012&site=qq&menu=yes" class="qq" target="_blank" title="319991012"><i class="fa fa-qq"></i></a>
               <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=319991012@qq.com" class="email" target="_blank" title="319991012@qq.com"><i class="fa fa-envelope"></i></a>
             </div>

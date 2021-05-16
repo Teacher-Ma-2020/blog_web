@@ -10,13 +10,12 @@
           <nav class="nav" >
             <ul>
               <li><router-link to="/">首页</router-link></li>
-              <li><router-link to="/blogsAll">浏览</router-link></li>
+              <li><router-link to="/blogsAll">博文</router-link></li>
               <li><router-link to="/blogadd">发表</router-link></li>
               <li><router-link :to="{name:'BlogsId',params:{blogId:this.userID}}" style="text-decoration: none;">管理</router-link></li>
               <router-link to="/messAge"><li><a >留言</a></li></router-link>
               <router-link to="/log"><li><a >开发日志</a></li></router-link>
               <router-link to="/about"><li><a >关于</a></li></router-link>
-<!--              <li><a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=319991012@qq.com" target="_blank">反馈</a></li>-->
             </ul>
           </nav>
 
@@ -70,13 +69,13 @@ export default {
   },
   methods:{
     logout(){
+      this.hasLogin=false;
       this.$http.get("/logout",{
         headers:{
           "Authorization":localStorage.getItem("token")
         }
       }).then(res=>{
         this.$store.commit("REMOVE_INFO")
-        this.hasLogin=false;
         this.$router.push("/login")
       })
     },
@@ -86,7 +85,7 @@ export default {
   },
   created() {
     if (this.$store.getters.getUser!==null){
-      // console.log(this.$store.getters.getUser);
+      console.log(this.$store.getters.getUser);
       this.user.username=this.$store.getters.getUser.username;
       this.user.avatar=this.$store.getters.getUser.avatar;
       this.userID=this.$store.getters.getUser.id;

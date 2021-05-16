@@ -12,10 +12,6 @@ import Vuex from 'vuex'
 // Vue.use(Highlight)
 
 
-import  "../static/html/layui/layui.js"
-import  "../static/html/js/wow.min.js"
-import "../static/html/js/index.js"
-
 
 import "element-ui/lib/theme-chalk/index.css"
 import "./axios"

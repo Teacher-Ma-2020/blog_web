@@ -4,9 +4,9 @@
     <div class="section" id="section1">
       <div class="fp-tablecell">
         <div class="page1">
-          <div class="nav zoomIn" >
+          <div class="layui-anim layui-anim-scale zoomIn"   style="color: white;text-align: center" >
             <h1>风的季节</h1>
-            <p>愿你历经千帆,归来仍是少年</p>
+            <p >愿你历尽千帆,归来仍是少年</p>
             <router-link to="/blogsAll"><a class="layui-btn layui-btn-normal" style="margin-top: 20px" href="#">Enter Blog</a></router-link>
           </div>
           <a class="next wow fadeInUp" data-wow-duration="2s" id="next" href="#section2"></a>
@@ -44,7 +44,7 @@
                     </div>
                     <p>
                     </p>
-                    <router-link to="/blogDetail/31"><a href="#" class="btn">
+                    <router-link to="/blogsAll"><a href="#" class="btn">
                       阅读更多
                     </a></router-link>
                   </div>
@@ -67,7 +67,7 @@
                     </div>
                     <p>
                     </p>
-                    <router-link to="/blogDetail/23"><a href="#" class="btn">
+                    <router-link to="/blogsAll"><a href="#" class="btn">
                       阅读更多
                     </a></router-link>
                   </div>
@@ -90,7 +90,7 @@
                     </div>
                     <p>
                     </p>
-                    <router-link to="/blogDetail/26"><a href="#" class="btn">
+                    <router-link to="/blogsAll"><a href="#" class="btn">
                       阅读更多
                     </a></router-link>
                   </div>
@@ -153,7 +153,8 @@
                 <ul class="social-icon">
                   <li class="active"><router-link to="/blogsAll"><a href="#"><i class="fa fa-book"></i>博文</a></router-link></li>
                   <li class="active"><router-link to="/message"><a href="#"><i class="fa fa-comments"></i>留言</a></router-link></li>
-                  <li class="active"><router-link to="/log"><a href="#"><i class="fa fa-snowflake-o"></i>日志</a></router-link></li>
+                  <li class="active"><router-link to="/log"><a href="#"><i class="fa fa-tag"></i>日志</a></router-link></li>
+                  <li class="active"><router-link to="/about"><a href="#"><i class="fa fa-info-circle"></i>关于</a></router-link></li>
 <!--                  <li class="active"><a href="#"><i class="fa fa-files-o"></i>归档</a></li>-->
                 </ul>
               </div>
@@ -168,6 +169,7 @@
                 </ul>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -185,7 +187,7 @@
 
 </template>
 
-
+<script src="../../static/html/layui/layui.js"></script>
 <script>
 export default {
   name: "Index.vue",
@@ -203,5 +205,7 @@ export default {
 @import "../../static/html/font-awesome/css/font-awesome.min.css";
 @import "../../static/html/css/index_style.css";
 @import "../../static/html/css/animate.min.css";
+
+
 
 </style>
