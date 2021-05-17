@@ -31,7 +31,7 @@
               </tr>
               <tr style="height: 120px">
                 <th style="text-align: right"><router-link to="userUpdate"><el-button type="primary"  round>修改信息</el-button></router-link></th>
-                <th><router-link to="/blogs"><el-button round>返回博客</el-button></router-link></th>
+                <th><router-link to="/blogsAll"><el-button round>返回博客</el-button></router-link></th>
               </tr>
             </table>
           </el-main>

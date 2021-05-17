@@ -1,7 +1,7 @@
 <template>
   <div style="background-image: url(https://yssimage.oss-cn-hangzhou.aliyuncs.com/bg9.jpg);height: 1000px">
     <Header></Header>
-      <div style="width: 500px;height: 70%;background-color: white;margin: 0 auto;text-align: center;border-radius: 15px;position:relative;top: 20px">
+      <div style="max-width: 500px;height: 70%;background-color: white;margin: 0 auto;text-align: center;border-radius: 15px;position:relative;top: 20px" class="zoomIn">
         <div style="position: relative;top: 20px">
           <div class="text">注册</div>
           <el-container>
