@@ -20,13 +20,12 @@ export default new Router({
   mode: 'history',
   routes: [
     {path:'/',name:'Index',component:resolve => require(["../components/Index"],resolve)},
-
     {path:'/blogsAll',name:'Blogs',component:resolve => require(["../components/Blogs"],resolve)},
     {path:'/login',name:'Login',component:resolve => require(["../components/Login"],resolve)},
     {path:'/blogadd',name:'BlogAdd',component:resolve => require(["../components/BlogEdit"],resolve), meta: {requireAuth: true}},
-    {path:'/blogDetail/:blogId',name:'BlogDetail',component:resolve => require(["../components/BlogDetail"],resolve)},
-    {path:'/blogEdit/:blogId',name:'BlogEdit',component:resolve => require(["../components/BlogEdit"],resolve), meta: {requireAuth: true}},
-    {path:'/blogsId/:blogId',name:'BlogsId',component:resolve => require(["../components/BlogsId"],resolve), meta: {requireAuth: true}},
+    {path:'/blogDetail/:blogId',name:'BlogDetail',component:BlogDetail},
+    {path:'/blogEdit/:blogId',name:'BlogEdit',component:BlogEdit, meta: {requireAuth: true}},
+    {path:'/blogsId/:blogId',name:'BlogsId',component:BlogsId, meta: {requireAuth: true}},
     {path:'/messAge',name:'Message',component:resolve => require(["../components/Message"],resolve)},
     {path:'/userAdd',name:'UserAdd',component:resolve => require(["../components/UserAdd"],resolve)},
     {path:'/log',name:'Log',component:resolve => require(["../components/Log"],resolve)},

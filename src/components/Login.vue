@@ -5,7 +5,7 @@
     </div>
     <div class="container">
       <div class="login-form">
-        <div class="text">登录</div>
+        <div class="text layui-anim layui-anim-scale">登录</div>
           <el-form :model="ruleForm" :rules="rules" ref="ruleForm" style="width: 80%" class="demo-ruleForm" >
             <el-form-item label="账号/邮箱" prop="username">
               <el-input v-model="ruleForm.username" ></el-input>
