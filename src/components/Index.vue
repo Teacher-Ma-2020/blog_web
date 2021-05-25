@@ -31,11 +31,11 @@
                 <div class="single-news">
                   <div class="news-head">
                     <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3455716236,3549213073&fm=26&gp=0.jpg">
-                    <router-link to="/blogDetail/31"><a href="#" class="link"><i class="fa fa-link"></i></a></router-link>
+                    <router-link to="/blog31"><a href="#" class="link"><i class="fa fa-link"></i></a></router-link>
                   </div>
                   <div class="news-content">
                     <h4>
-                      <router-link to="/blogDetail/31"><a href="#">
+                      <router-link to="/blog31"><a href="#">
                         慢慢忘却
                       </a></router-link>
                     </h4>
@@ -54,11 +54,11 @@
                 <div class="single-news">
                   <div class="news-head">
                     <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=4185388668,542479084&fm=26&gp=0.jpg">
-                    <router-link to="/blogDetail/23"><a href="#" class="link"><i class="fa fa-link"></i></a></router-link>
+                    <router-link to="/blog23"><a href="#" class="link"><i class="fa fa-link"></i></a></router-link>
                   </div>
                   <div class="news-content">
                     <h4>
-                      <router-link to="/blogDetail/23"><a href="#">
+                      <router-link to="/blog23"><a href="#">
                         SpringBoot笔记
                       </a></router-link>
                     </h4>
@@ -77,11 +77,11 @@
                 <div class="single-news">
                   <div class="news-head">
                     <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3702920847,3662520481&fm=26&gp=0.jpg">
-                    <router-link to="/blogDetail/26"><a href="#" class="link"><i class="fa fa-link"></i></a></router-link>
+                    <router-link to="/blog26"><a href="#" class="link"><i class="fa fa-link"></i></a></router-link>
                   </div>
                   <div class="news-content">
                     <h4>
-                      <router-link to="/blogDetail/26"><a href="#">
+                      <router-link to="/blog26"><a href="#">
                         数据结构与算法
                       </a></router-link>
                     </h4>
@@ -144,7 +144,7 @@
                 <div class="footer-logo">
                   <h2>风的季节</h2>
                 </div>
-                <p>愿你历经千帆，归来仍是少年。</p>
+                <p>愿你历尽千帆，归来仍是少年。</p>
               </div>
             </div>
             <div class="layui-col-xs12 layui-col-sm6 layui-col-md4">
@@ -155,7 +155,8 @@
                   <li class="active"><router-link to="/message"><a href="#"><i class="fa fa-comments"></i>留言</a></router-link></li>
                   <li class="active"><router-link to="/log"><a href="#"><i class="fa fa-tag"></i>日志</a></router-link></li>
                   <li class="active"><router-link to="/about"><a href="#"><i class="fa fa-info-circle"></i>关于</a></router-link></li>
-<!--                  <li class="active"><a href="#"><i class="fa fa-files-o"></i>归档</a></li>-->
+                  <li class="active"><a href="https://wpa.qq.com/msgrd?v=3&uin=319991012&site=qq&menu=yes" class="qq" target="_blank" title="319991012"><i class="fa fa-qq"></i>QQ</a></li>
+                  <li class="active"><a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=319991012@qq.com" class="email" target="_blank" title="319991012@qq.com"><i class="fa fa-envelope"></i>Email</a></li>
                 </ul>
               </div>
             </div>
@@ -164,8 +165,8 @@
                 <h2>联系我</h2>
                 <ul class="list">
                   <li><i class="fa fa-map"></i>地址: 湖北省武汉市洪山区雄楚大道632号</li>
-                  <li><i class="fa fa-qq"></i>QQ: 319991012 </li>
-                  <li><i class="fa fa-envelope"></i>邮箱: 319991012@qq.com</li>
+                  <li><a href="https://wpa.qq.com/msgrd?v=3&uin=319991012&site=qq&menu=yes" class="qq" target="_blank" title="319991012"><i class="fa fa-qq"></i>QQ: 319991012 </a> </li>
+                  <li><a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=319991012@qq.com" class="email" target="_blank" title="319991012@qq.com"><i class="fa fa-envelope"></i>邮箱: 319991012@qq.com</a></li>
                 </ul>
               </div>
             </div>
@@ -177,7 +178,7 @@
         <div class="container">
           <div class="layui-row">
             <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 text-center">
-              <p>Copyright &copy; 2018-2022 风的季节 All Rights Reserved V.3.1.3 蜀ICP备18008600号</p>
+              <p>Copyright &copy; 2018-2022 风的季节 All Rights Reserved V.3.1.3 鄂ICP备2021008605号-1</p>
             </div>
           </div>
         </div>

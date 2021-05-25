@@ -8,7 +8,7 @@
           title="发布文章"
           :visible.sync="dialogVisible"
           width="50%"
-
+          style="min-width: 300px"
           :before-close="handleClose2">
 
           <center >
@@ -19,7 +19,7 @@
               <tr>
                 <th style="width: 150px">
                   <p >
-                    <el-select v-model="value" style="position:fixed;width: 120px" placeholder="请选择封面"  >
+                    <el-select v-model="value"  placeholder="请选择封面"  >
                       <el-option-group
                         v-for="group in options"
                         :key="group.label"
@@ -35,12 +35,29 @@
                       </el-option-group>
                     </el-select>
                   </p>
+
                 </th>
-                <th>
+                <th rowspan="2">
                   <br/>
                   <div class="block">
                     <el-image  style="width: 250px" :src="value"></el-image>
                   </div>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  <br/>
+                  <br/>
+                  <el-upload
+                    style="text-align: left;"
+                    :on-change="handleChange"
+                    class="upload-demo"
+                    :file-list="fileList"
+                    action="http://121.43.55.23:8082/file/upload"
+                    :before-upload="beforeAvatarUpload"
+                  >
+                    <el-button size="small" style="text-align: left;position: relative;bottom: 40px;height: 40px;width: 150px" type="success" plain>自定义上传头像</el-button>
+                  </el-upload>
                 </th>
               </tr>
               <tr>
@@ -79,21 +96,6 @@
             <el-button type="primary"  style="display:block;margin:0 auto"  @click="add">立即发布</el-button>
           </span>
         </el-dialog>
-<!--        <el-form-item label="封面"  >-->
-<!--          <br/>-->
-<!--          <el-dropdown style="float: left">-->
-<!--          <el-button type="primary" style="width: 100px;height: 40px">-->
-<!--            选择封面<i class="el-icon-arrow-down el-icon&#45;&#45;right"></i>-->
-<!--          </el-button>-->
-<!--          <el-dropdown-menu slot="dropdown">-->
-<!--            <el-dropdown-item>黄金糕</el-dropdown-item>-->
-<!--            <el-dropdown-item>狮子头</el-dropdown-item>-->
-<!--            <el-dropdown-item>螺蛳粉</el-dropdown-item>-->
-<!--            <el-dropdown-item>双皮奶</el-dropdown-item>-->
-<!--            <el-dropdown-item>蚵仔煎</el-dropdown-item>-->
-<!--          </el-dropdown-menu>-->
-<!--          </el-dropdown>-->
-<!--        </el-form-item>-->
         <el-form-item label="标题" prop="title">
           <el-input v-model="ruleForm.title"></el-input>
         </el-form-item>
@@ -193,7 +195,8 @@ export default {
         content: [
           { required: true,trigger: 'blur' }
         ],
-      }
+      },
+      fileList: []
     };
   },
   methods: {
@@ -246,11 +249,10 @@ export default {
               "Authorization": localStorage.getItem("token")
             }
           }).then(res=>{
-            console.log(res)
             this.$alert('发布成功', '提示', {
               confirmButtonText: '确定',
               callback: action => {
-                this.$router.push("/blogs")
+                this.$router.push("/blogsAll")
               }
             });
           })
@@ -262,7 +264,35 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
-    }
+    },
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === 'image/jpeg' || file.type==='image/png';
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error({
+          message:"上传头像图片只能是 JPG/PNG 格式!",
+          type:"error",
+          offset: 100
+        });
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+      return isJPG && isLt2M;
+    },
+    handleChange(file, fileList) {
+      this.fileList = [file]
+      if (fileList[0].response!=null){
+        this.value="http://18163126.top:8080/img/"+fileList[0].response.data;
+        this.$notify({
+          title: '',
+          message: '封面上传成功',
+          type: 'success',
+          offset: 100
+        });
+      }
+    },
   },
   created() {
     if(this.$store.getters.getUser==null) {
@@ -276,6 +306,8 @@ export default {
         this.ruleForm.title=blog.title;
         this.ruleForm.description=blog.description;
         this.ruleForm.content=blog.content;
+        this.value=blog.avatar;
+        this.dynamicTags=blog.dynamicTags;
       })
     }
   }

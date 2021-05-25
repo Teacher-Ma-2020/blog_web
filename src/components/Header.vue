@@ -1,5 +1,5 @@
 <template>
-  <div class="m-content" style="background-color: white">
+  <div class="m-content" style="background-color: white" v-loading.fullscreen.lock="isLoad">
     <br/>
     <br/>
 
@@ -64,17 +64,20 @@ export default {
       activeIndex: '1',
       activeIndex2: '1',
       userID:"",
-      input:""
+      input:"",
+      isLoad:false
     }
   },
   methods:{
     logout(){
       this.hasLogin=false;
+      this.isLoad=true;
       this.$http.get("/logout",{
         headers:{
           "Authorization":localStorage.getItem("token")
         }
       }).then(res=>{
+        this.isLoad=false;
         this.$store.commit("REMOVE_INFO")
         this.$router.push("/login")
       })
@@ -84,8 +87,7 @@ export default {
     }
   },
   created() {
-    if (this.$store.getters.getUser!==null){
-      console.log(this.$store.getters.getUser);
+    if (this.$store.getters.getUser.id!=null){
       this.user.username=this.$store.getters.getUser.username;
       this.user.avatar=this.$store.getters.getUser.avatar;
       this.userID=this.$store.getters.getUser.id;

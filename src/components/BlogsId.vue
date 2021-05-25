@@ -80,13 +80,12 @@ export default {
   methods: {
     page(currentPage) {
         this.$http.get("/blogSelf?currentPage=" +currentPage+"&userID="+this.userID).then(res => {
-          console.log(res);
-          this.blogs = res.data.data.records;
-          this.currentPage = res.data.data.current;
-          this.total = res.data.data.total;
-          this.pageSize = res.data.data.size;
-        })
-
+        console.log(res);
+        this.blogs = res.data.data.records;
+        this.currentPage = res.data.data.current;
+        this.total = res.data.data.total;
+        this.pageSize = res.data.data.size;
+      })
     },
     all(){
       this.page(1)
@@ -103,16 +102,22 @@ export default {
       })
     },
     remove(id){
-      this.$http.get("/deleteBlog/"+id,{
-        headers: {
-          "Authorization": localStorage.getItem("token")
-        }
-      }).then(res=>{
-        this.$alert('删除成功', '提示', {
+        this.$confirm('此操作将永久删除该博客, 是否继续?', '提示', {
           confirmButtonText: '确定',
-          callback: action => {
-            this.$router.push("/blogs");
-          }
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$http.get("/deleteBlog/"+id,{
+            headers: {
+              "Authorization": localStorage.getItem("token")
+            }
+          }).then(()=>{
+          this.$message({
+            type: 'success',
+            message: '删除成功!',
+            offset: 100
+          });
+          this.self();
         });
       })
     }
@@ -121,7 +126,6 @@ export default {
     if(this.$store.getters.getUser==null) {
       this.$router.push("/login")
     }
-    this.page(1)
     this.username=this.$store.getters.getUser.username
     this.userID=this.$store.getters.getUser.id
     this.self()

@@ -18,7 +18,17 @@
                     :value="item.avatar">
                   </el-option>
                 </el-select>
-                <el-avatar :size="50" :src="ruleForm.avatar" ></el-avatar>
+                <el-avatar :size="100" :src="ruleForm.avatar" ></el-avatar>
+                <el-upload
+                  style="text-align: left"
+                  :on-change="handleChange"
+                  class="upload-demo"
+                  :file-list="fileList"
+                  action="http://121.43.55.23:8082/file/upload"
+                  :before-upload="beforeAvatarUpload"
+                >
+                  <el-button size="small" style="text-align: left;position: relative;bottom: 40px" type="primary">自定义上传头像</el-button>
+                </el-upload>
 
               </el-form-item>
               <el-form-item label="用户名" v-if="!isUser"  required>
@@ -121,6 +131,27 @@ export default {
         avatar: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2722445516,1571741308&fm=26&gp=0.jpg',
         label: 'vn'
       }, {
+        avatar: 'http://5b0988e595225.cdn.sohucs.com/images/20190515/d153e662307f41b18d2c7188d689518d.jpeg',
+        label: '阿卡丽'
+      }, {
+        avatar: 'http://5b0988e595225.cdn.sohucs.com/images/20190515/73db30575ec347f59eae64ef069ddee9.jpeg',
+        label: '盲僧'
+      }, {
+        avatar: 'http://5b0988e595225.cdn.sohucs.com/images/20190515/cc303a648439498fa1ce8c2cec3e55d5.jpeg',
+        label: '阿狸'
+      }, {
+        avatar: 'http://5b0988e595225.cdn.sohucs.com/images/20190515/8b8cad5c0e70458d9024a4b64542606e.jpeg',
+        label: '刀妹'
+      }, {
+        avatar: 'http://5b0988e595225.cdn.sohucs.com/images/20190515/e2eb516023d34923abaf67768fe4ad0d.jpeg',
+        label: '诺手'
+      }, {
+        avatar: 'http://5b0988e595225.cdn.sohucs.com/images/20190515/485bdf862fdb48709268707526ceaf1f.jpeg',
+        label: '锐雯'
+      }, {
+        avatar: 'http://5b0988e595225.cdn.sohucs.com/images/20190515/07240014b17a471799e50af9cfd00b71.jpeg',
+        label: '男枪'
+      }, {
         avatar: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2400920312,4079163394&fm=26&gp=0.jpg',
         label: '艾希'
       }, {
@@ -168,8 +199,8 @@ export default {
         emailNum:[
           { required: true, message: '请输入验证码', trigger: 'blur' },
         ],
-
-      }
+      },
+      fileList: []
     };
   },
   methods: {
@@ -224,7 +255,7 @@ export default {
       if(this.ruleForm.email==="") {
         this.$message({
           showClose: true,
-          message: '请输入验证码',
+          message: '请输入邮箱',
           type: 'warning',
           offset: 100
         });
@@ -267,7 +298,35 @@ export default {
           }
         })
       }
-    }
+    },
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === 'image/jpeg' || file.type==='image/png';
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error({
+          message:"上传头像图片只能是 JPG/PNG 格式!",
+          type:"error",
+          offset: 100
+        });
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+      return isJPG && isLt2M;
+    },
+    handleChange(file, fileList) {
+      this.fileList = [file]
+      if (fileList[0].response!=null){
+        this.ruleForm.avatar="http://18163126.top:8080/img/"+fileList[0].response.data;
+        this.$notify({
+          title: '',
+          message: '头像上传成功',
+          type: 'success',
+          offset: 100
+        });
+      }
+    },
   },
   created() {
     if(this.$store.getters.getUser==null) {

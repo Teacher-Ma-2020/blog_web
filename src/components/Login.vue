@@ -1,23 +1,24 @@
 <template>
-  <div v-loading.fullscreen.lock="isLoad">
+  <div>
     <Header></Header>
     <div class="header">
     </div>
-    <div class="container">
-      <div class="login-form">
-        <div class="text layui-anim layui-anim-scale">登录</div>
+    <div class="container"  v-loading.fullscreen.lock="isLoad" >
+      <div class="login-form  zoomIn">
+        <div class="text">登录</div>
           <el-form :model="ruleForm" :rules="rules" ref="ruleForm" style="width: 80%" class="demo-ruleForm" >
             <el-form-item label="账号/邮箱" prop="username">
-              <el-input v-model="ruleForm.username" ></el-input>
+              <el-input v-model="ruleForm.username"  @keyup.enter.native="submitForm('ruleForm')"></el-input>
             </el-form-item>
             <el-form-item label="密码" prop="password" style="position: relative;bottom: 15px">
-              <el-input type="password" v-model="ruleForm.password" ></el-input>
+              <el-input type="password" v-model="ruleForm.password" @keyup.enter.native="submitForm('ruleForm')"></el-input>
             </el-form-item>
 
             <div class="btn" @click="submitForm('ruleForm')">登录</div>
             <div class="other">
-              没有账号？<a @click.prevent="resetForm('ruleForm')" href="#">去注册</a>
+              无法登陆？<a @click.prevent="resetForm('ruleForm')" href="#">去注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  href="userPassword">找回密码</a>
             </div>
+
         </el-form>
       </div>
     </div>
@@ -40,7 +41,7 @@ export default {
       },
       rules: {
         username: [
-          { required: true, message: '请输入用户名', trigger: 'blur' },
+          { required: true, message: '请输入用户名或者邮箱', trigger: 'blur' },
           { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
         ],
         password: [
@@ -53,8 +54,8 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
+          this.isLoad=true;
           this.$http.post("/login",this.ruleForm).then(res=>{
-            console.log(res);
             const jwt=res.headers['authorization'];
             const userInfo=res.data.data;
             console.log(userInfo);
@@ -64,13 +65,12 @@ export default {
             if(this.$store.getters.getUser!=null){
               this.$router.push("/blogsAll")
             }
+            this.isLoad=false;
           })
         } else {
-
           console.log('error submit!!');
           return false;
         }
-
       });
     },
     resetForm(formName) {
@@ -90,6 +90,7 @@ export default {
   }
 }
 </script>
+
 
 <style>
 @import "../../static/html/css/master.css";

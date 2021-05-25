@@ -4,6 +4,42 @@
     <div class="header">
     </div>
     <div class="doc-container" id="doc-container">
+      <center >
+        <el-dialog
+          style="min-width: 250px;"
+          title=""
+          :visible.sync="dialogVisible"
+          width="25%"
+          :before-close="handleClose">
+            <span>
+              <h1>用户信息</h1>
+              <br/>
+                <el-avatar :size="100" :src="ruleForm.avatar" ></el-avatar>
+              <table style="line-height: 48px;font-size: 16px;text-align: center;width: 100%">
+              <tr>
+                <th style="color:#3e8bc7">用户名</th>
+                <th >{{this.ruleForm.username}}</th>
+              </tr>
+              <tr>
+                <th style="color:#3e8bc7">生日</th>
+                <th>{{ this.ruleForm.created.substr(5,5) }}</th>
+              </tr>
+              <tr>
+                <th style="color:#3e8bc7">邮箱</th>
+                <th>{{ this.ruleForm.email }}</th>
+              </tr>
+              <tr>
+                <th style="color:#3e8bc7">博客数量</th>
+                <th>{{ this.blogNum }}</th>
+              </tr>
+            </table>
+              <br/>
+              <el-button  @click="dialogVisible=false"   round>返回</el-button>
+            </span>
+          <span slot="footer" class="dialog-footer">
+        </span>
+        </el-dialog>
+      </center>
       <div class="container-fixed">
         <div class="container-inner">
           <section class="msg-remark">
@@ -43,9 +79,14 @@
               <li class="zoomIn article" >
                 <div class="comment-parent">
 
-                  <img :src="message.user.avatar"  />
+                  <img style="cursor:pointer;" @click="open(message.userId)" :src="message.user.avatar"  />
                   <div class="info">
-                    <span class="username">{{message.user.username}}:</span>
+                    <span class="username" style="cursor:pointer;" @click="open(message.userId)">{{message.user.username}}:</span>
+                    <span style="float: right" v-if="(message.userId===Login_id)">
+                      <el-link @click="remove(message.id)">
+                        <i class="el-icon-delete"></i>删除
+                      </el-link>
+                    </span>
                   </div>
                   <div class="comment-content" style="font-size: 16px">
                     {{ message.content }}
@@ -72,7 +113,7 @@
               <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=319991012@qq.com" class="email" target="_blank" title="319991012@qq.com"><i class="fa fa-envelope"></i></a>
             </div>
             <p class="mt05">
-              Copyright &copy; 2018-2022 风的季节 All Rights Reserved V.1.0.0 蜀ICP备18008600号
+              Copyright &copy; 2018-2022 风的季节 All Rights Reserved V.1.0.0 鄂ICP备2021008605号-1
             </p>
           </div>
         </div>
@@ -91,15 +132,34 @@ export default {
   data(){
     return{
       isLoad:true,
+      isLogin:false,
+      show:false,
+      Login_id:-1,
       textarea: '',
-      messages:{},
+      messages:[],
       messageAdd:{
         user_id:0,
         content:""
-      }
+      },
+      dialogVisible: false,
+      ruleForm: {
+        avatar:"",
+        username:"",
+        created:"",
+        email:"",
+      },
+      blogNum:0
     }
   },
   methods:{
+    getAll(){
+      this.isLoad=true;
+      this.$http.get("/message/getAll").then(res=>{
+        this.messages=res.data.data;
+        this.isLoad=false;
+        console.log(this.messages)
+      })
+    },
     addMessage(){
       if (this.$store.getters.getUser!=null){
         if(this.textarea===""){
@@ -110,47 +170,77 @@ export default {
             offset: 100
           });
         }else{
-          this.isLoad=true;
-          this.messageAdd.content=this.textarea;
-          this.messageAdd.user_id=this.$store.getters.getUser.id;
-          console.log(this.messageAdd);
-          this.$http.post("/message/addMessage",this.messageAdd).then(res=>{
-            if(res.data.data){
-              this.$alert('留言成功', '提示', {
-                confirmButtonText: '确定',
-                callback: action => {
-                  this.$router.push("/messAge");
-                  this.getAll();
-                  this.textarea="";
-                }
-              });
-            }else{
-              this.$alert('出现错误', '提示', {
-                confirmButtonText: '确定',
-                callback: action => {
-                  this.$router.push("/messAge");
-                  this.getAll();
-                  this.textarea="";
-                }
-              });
-            }
-          })
+          if(this.$store.getters.getUser.id==null) {
+            this.$router.push("/login")
+          }else{
+            this.isLoad=true;
+            this.messageAdd.content=this.textarea;
+            this.messageAdd.user_id=this.$store.getters.getUser.id;
+            console.log(this.messageAdd);
+            this.$http.post("/message/addMessage",this.messageAdd).then(res=>{
+              if(res.data.data){
+                this.$alert('留言成功', '提示', {
+                  confirmButtonText: '确定',
+                  callback: action => {
+                    this.getAll();
+                    this.textarea="";
+                  }
+                });
+              }else{
+                this.$alert('出现错误', '提示', {
+                  confirmButtonText: '确定',
+                  callback: action => {
+                    this.$router.push("/messAge");
+                    this.getAll();
+                    this.textarea="";
+                  }
+                });
+              }
+            })
+          }
         }
       }else{
         this.$router.push("/login")
       }
     },
-    getAll(){
+    handleClose(done) {
+      this.dialogVisible=false;
+    },
+    open(id){
+      this.dialogVisible=true;
       this.isLoad=true;
-      this.$http.get("/message/getAll").then(res=>{
-        this.messages=res.data.data;
+      this.$http.get("/user/findName/"+id).then(res=>{
+        this.ruleForm= res.data.data
+      })
+      this.$http.get("/getNum?userid="+id).then(res=>{
+        this.blogNum=res.data.data;
         this.isLoad=false;
       })
+    },
+    remove(id){
+      this.$confirm('是否删除该留言?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$http.get("/message/deleteById?id="+id).then(()=>{
+          this.$message({
+            type: 'success',
+            message: '删除成功!',
+            offset: 100
+          });
+          this.getAll();
+        });
+      })
+
     }
-  }
-  ,
+  },
   created() {
     this.getAll();
+    if(this.$store.getters.getUser.id!=null){
+      this.isLoad=true;
+      this.Login_id=this.$store.getters.getUser.id;
+    }
   }
 }
 </script>

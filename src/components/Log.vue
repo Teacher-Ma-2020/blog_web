@@ -7,7 +7,7 @@
       <div class="container-fixed">
         <div class="timeline-box shadow" STYLE="border-radius: 15px;">
           <div class="timeline-main" >
-            <h1><i class="fa fa-clock-o"></i>日记</h1>
+            <h1><i class="fa fa-clock-o"></i>日志</h1>
             <div class="timeline-line"></div>
             <div class="timeline-year">
               <h2><a class="yearToggle">开发日志</a><i class="fa fa-caret-down fa-fw"></i></h2>
@@ -15,7 +15,23 @@
                 <ul>
                   <li>
                     <div class="h4 animated fadeInLeft">
-                      <p class="date">2021-5-6</p>
+                      <p class="date">2021-05-21</p>
+                    </div>
+                    <p class="dot-circle animated"><i class="fa fa-dot-circle-o"></i></p>
+                    <div class="content animated fadeInRight re"><p style="text-align: left;">支持自定义头像、封面上传</p></div>
+                    <div class="clear"></div>
+                  </li>
+                  <li>
+                    <div class="h4 animated fadeInLeft">
+                      <p class="date">2021-05-20</p>
+                    </div>
+                    <p class="dot-circle animated"><i class="fa fa-dot-circle-o"></i></p>
+                    <div class="content animated fadeInRight re"><p style="text-align: left;">增加了密码找回功能，添加了更多用户可选头像</p></div>
+                    <div class="clear"></div>
+                  </li>
+                  <li>
+                    <div class="h4 animated fadeInLeft">
+                      <p class="date">2021-05-06</p>
                     </div>
                     <p class="dot-circle animated"><i class="fa fa-dot-circle-o"></i></p>
                     <div class="content animated fadeInRight re"><p style="text-align: left;">项目上线，修复了部分bug，功能后续待完善</p></div>
@@ -23,7 +39,7 @@
                   </li>
                   <li>
                     <div class="h4 animated fadeInLeft">
-                      <p class="date">2021-5-5</p>
+                      <p class="date">2021-05-05</p>
                     </div>
                     <p class="dot-circle animated "><i class="fa fa-dot-circle-o"></i></p>
                     <div class="content animated fadeInRight re"><p style="text-align: left;">博客添加了封面和标签,以及搜索功能</p></div>
@@ -31,7 +47,7 @@
                   </li>
                   <li>
                     <div class="h4 animated fadeInLeft">
-                      <p class="date">2021-5-4</p>
+                      <p class="date">2021-05-04</p>
                     </div>
                     <p class="dot-circle animated "><i class="fa fa-dot-circle-o"></i></p>
                     <div class="content animated fadeInRight re"><p style="text-align: left;">添加了用户的信息查看，以及基本的信息修改</p></div>
@@ -39,7 +55,7 @@
                   </li>
                   <li>
                     <div class="h4 animated fadeInLeft">
-                      <p class="date">2021-5-2</p>
+                      <p class="date">2021-05-02</p>
                     </div>
                     <p class="dot-circle animated "><i class="fa fa-dot-circle-o"></i></p>
                     <div class="content animated fadeInRight re"><p style="text-align: left;">添加了邮箱验证码校验</p></div>
@@ -47,7 +63,7 @@
                   </li>
                   <li>
                     <div class="h4 animated fadeInLeft">
-                      <p class="date">2021-4-28</p>
+                      <p class="date">2021-04-28</p>
                     </div>
                     <p class="dot-circle animated "><i class="fa fa-dot-circle-o"></i></p>
                     <div class="content animated fadeInRight re"><p style="text-align: left;">博客页面添加了浏览量、评论等功能，完善了用户登陆、注册模块等前端布局</p></div>
@@ -55,7 +71,7 @@
                   </li>
                   <li>
                     <div class="h4 animated fadeInLeft">
-                      <p class="date">2021-4-25</p>
+                      <p class="date">2021-04-25</p>
                     </div>
                     <p class="dot-circle animated "><i class="fa fa-dot-circle-o"></i></p>
                     <div class="content animated fadeInRight re"><p style="text-align: left;">完善博客详情页面的查询、浏览，以及用户模块的管理博客页面的开发</p></div>
@@ -63,7 +79,7 @@
                   </li>
                   <li>
                     <div class="h4 animated fadeInLeft">
-                      <p class="date">2021-4-23</p>
+                      <p class="date">2021-04-23</p>
                     </div>
                     <p class="dot-circle animated "><i class="fa fa-dot-circle-o"></i></p>
                     <div class="content animated fadeInRight re"><p style="text-align: left;">使用前端资源重构项目，并设计了更多的模块，且完成了留言模块的开发</p></div>
@@ -71,7 +87,7 @@
                   </li>
                   <li>
                     <div class="h4 animated fadeInLeft">
-                      <p class="date">2021-3-22</p>
+                      <p class="date">2021-03-22</p>
                     </div>
                     <p class="dot-circle animated "><i class="fa fa-dot-circle-o"></i></p>
                     <div class="content animated fadeInRight re"><p><span>使用Element-UI，完成前端的基本布局，并于后端接口进行对接</span></p></div>
@@ -79,7 +95,7 @@
                   </li>
                   <li>
                     <div class="h4 animated fadeInLeft">
-                      <p class="date">2021-3-18</p>
+                      <p class="date">2021-03-18</p>
                     </div>
                     <p class="dot-circle animated "><i class="fa fa-dot-circle-o"></i></p>
                     <div class="content animated fadeInRight re"><p><span>后端完成基本的接口，包括博客的增删改查，用户的注册、登陆、退出等</span></p></div>
@@ -87,7 +103,7 @@
                   </li>
                   <li>
                     <div class="h4 animated fadeInLeft">
-                      <p class="date">2021-3-15</p>
+                      <p class="date">2021-03-15</p>
                     </div>
                     <p class="dot-circle animated "><i class="fa fa-dot-circle-o"></i></p>
                     <div class="content animated fadeInRight re"><p>博客项目构建，完成建库建表</p></div>
@@ -109,7 +125,7 @@
                       <p class="date"></p>
                     </div>
                     <p class="dot-circle animated "><i class="fa fa-dot-circle-o"></i></p>
-                    <div class="content animated fadeInRight">愿你历经千帆，归来仍是少年。</div>
+                    <div class="content animated fadeInRight">愿你历尽千帆，归来仍是少年。</div>
                     <div class="clear"></div>
                   </li>
                   <li>
@@ -160,15 +176,6 @@
                     <div class="content animated fadeInRight"><p><span>人面不知何处去，桃花依旧笑春风。</span></p></div>
                     <div class="clear"></div>
                   </li>
-                  <li>
-                    <div class="h4 animated fadeInLeft">
-                      <p class="date"></p>
-                    </div>
-                    <p class="dot-circle animated "><i class="fa fa-dot-circle-o"></i></p>
-                    <div class="content animated fadeInRight"><p>风的季节</p></div>
-                    <div class="clear"></div>
-                  </li>
-
                 </ul>
               </div>
             </div>
@@ -190,7 +197,7 @@
               <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=319991012@qq.com" class="email" target="_blank" title="319991012@qq.com"><i class="fa fa-envelope"></i></a>
             </div>
             <p class="mt05">
-              Copyright &copy; 2018-2022 风的季节 All Rights Reserved V.1.0.0 蜀ICP备18008600号
+              Copyright &copy; 2018-2022 风的季节 All Rights Reserved V.1.0.0 鄂ICP备2021008605号-1
             </p>
           </div>
         </div>

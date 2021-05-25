@@ -2,15 +2,14 @@
   <div style="background-image: url(https://yssimage.oss-cn-hangzhou.aliyuncs.com/bg9.jpg);height: 1000px">
     <Header></Header>
     <div style="width: 20%;min-width: 300px;height: 70%;background-color: white;margin: 0 auto;text-align: center;border-radius: 15px;position:relative;top: 20px">
-      <div style="position: relative;top: 20px">
+      <div style="position: relative;top: 20px;" v-loading.fullscreen.lock="isLoad">
         <div class="text">个人信息</div>
         <el-container>
-
           <el-main >
 
             <el-form  ref="ruleForm" label-width="100px" class="add_width">
 
-                <el-avatar :size="80" :src="ruleForm.avatar" ></el-avatar>
+                <el-avatar :size="120" :src="ruleForm.avatar" ></el-avatar>
             </el-form>
             <table style="line-height: 48px;font-size: 16px;text-align: center;width: 100%">
               <tr>
@@ -50,7 +49,8 @@ name: "User",
     return {
       ruleForm: {
       },
-      blogNum:0
+      blogNum:0,
+      isLoad:false
     };
   },
   methods: {
@@ -59,11 +59,13 @@ name: "User",
     if(this.$store.getters.getUser==null){
       this.$router.push("/login")
     }else {
+      this.isLoad=true;
       this.$http.get("/user/findName/"+this.$store.getters.getUser.id).then(res=>{
         this.ruleForm= res.data.data
-        this.$http.get("/getNum?userid="+this.$store.getters.getUser.id).then(res=>{
-          this.blogNum=res.data.data;
-        })
+      })
+      this.$http.get("/getNum?userid="+this.$store.getters.getUser.id).then(res=>{
+        this.blogNum=res.data.data;
+        this.isLoad=false;
       })
 
     }

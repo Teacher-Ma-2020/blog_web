@@ -53,8 +53,8 @@
                     本站结构：
                 </span>
               <ul>
-                <li>前 端 ：<code>Vue + Layui + Bootstrap + Element-UI</code> &nbsp;感谢<code><a href="https://gitee.com/yssgit" style="color: #BD4147">燕十三</a></code>提供的静态页面</li>
-                <li>后 端 ：<code>SpringBoot  + Shiro + Jwt + MYSQL + MybatisPlus</code></li>
+                <li>前 端 ：<code>Vue + Element-UI + Axios + Layui + Bootstrap</code> &nbsp;感谢<code><a href="https://gitee.com/yssgit" target="_blank" style="color: #BD4147">燕十三</a></code>提供的静态页面</li>
+                <li>后 端 ：<code>SpringBoot  + Shiro + Jwt + MYSQL + MybatisPlus + Druid </code></li>
               </ul>
               <p>
                 本站采用<code>阿里云ESC服务器</code>以及<code>Nginx</code>进行部署。
@@ -128,7 +128,7 @@
               <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=319991012@qq.com" class="email" target="_blank" title="319991012@qq.com"><i class="fa fa-envelope"></i></a>
             </div>
             <p class="mt05">
-              Copyright &copy; 2018-2018 风的季节 All Rights Reserved V.1.0.0 蜀ICP备18008600号
+              Copyright &copy; 2018-2022 风的季节 All Rights Reserved V.1.0.0 鄂ICP备2021008605号-1
             </p>
           </div>
         </div>
