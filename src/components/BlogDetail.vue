@@ -63,9 +63,9 @@
                   <span class="month fs-18">{{ blog.created.substr(5,2) }}<small class="fs-14">月</small></span>
                   <span class="year fs-18">{{ blog.created.substr(0,4) }}</span>
                 </div>
-                <div class="content artiledetail" style="border-bottom: 1px solid #e1e2e0; padding-bottom: 20px;">
+                <div class="content artiledetail" v-highlight style="border-bottom: 1px solid #e1e2e0; padding-bottom: 20px;">
                   <div style="width:100%;min-height: 500px">
-                    <div class="mblog"  style="background-color: white">
+                    <div class="mblog"  v-highlight style="background-color: white">
                       <el-backtop >
                         <div
                           style="{
@@ -193,9 +193,9 @@
 
 
 <script>
+import 'highlight.js/styles/github.css'
 import 'github-markdown-css/github-markdown.css'
 import Header from "./Header";
-import "github-markdown-css";
 import 'highlight.js/styles/atom-one-dark.css'
 
 export default {
