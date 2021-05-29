@@ -1,5 +1,5 @@
 <template>
-  <div style="background-image: url(https://yssimage.oss-cn-hangzhou.aliyuncs.com/bg9.jpg);height: 1000px">
+  <div style="background-image: url(https://yssimage.oss-cn-hangzhou.aliyuncs.com/bg9.jpg);height: 1000px" v-loading.fullscreen.lock="isLoad" id="doc-container">
     <Header></Header>
     <div style="width: 30%;min-width: 300px;height: 70%;background-color: white;margin: 0 auto;text-align: center;border-radius: 15px;position:relative;top: 20px">
       <div style="position: relative;top: 20px">
@@ -111,6 +111,7 @@ export default {
       }
     };
     return {
+      isLoad:false,
       imageUrl: '',
       options: [{
         avatar: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=278856886,2004647430&fm=26&gp=0.jpg',
@@ -220,7 +221,9 @@ export default {
         if (valid) {
           console.log(this.ruleForm);
           //判断验证码是否正确
+          this.isLoad=true;
           this.$http.get("/email/check/"+this.ruleForm.email+"/"+this.ruleForm.emailNum).then(res=>{
+            this.isLoad=false;
             if(res.data.data){
               this.$http.post("user/update",this.ruleForm).then(res=>{
                 console.log(res);

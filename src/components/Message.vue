@@ -155,13 +155,15 @@ export default {
     getAll(){
       this.isLoad=true;
       this.$http.get("/message/getAll").then(res=>{
+
         this.messages=res.data.data;
         this.isLoad=false;
         console.log(this.messages)
       })
     },
     addMessage(){
-      if (this.$store.getters.getUser!=null){
+
+      if (this.$store.getters.getUser.id!=null){
         if(this.textarea===""){
           this.$message({
             showClose: true,
@@ -170,9 +172,6 @@ export default {
             offset: 100
           });
         }else{
-          if(this.$store.getters.getUser.id==null) {
-            this.$router.push("/login")
-          }else{
             this.isLoad=true;
             this.messageAdd.content=this.textarea;
             this.messageAdd.user_id=this.$store.getters.getUser.id;
@@ -197,7 +196,7 @@ export default {
                 });
               }
             })
-          }
+
         }
       }else{
         this.$router.push("/login")

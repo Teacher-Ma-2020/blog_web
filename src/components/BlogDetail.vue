@@ -55,7 +55,7 @@
                       作者：<a href="javascript:void(0)" @click="open(ruleForm.userId)" class="fc-link">{{this.ruleForm.userName}}</a>
                     </small>
                     <small class="ml10">围观群众：<i class="readcount fc-link">{{this.blog.view}}</i></small>
-                    <small class="ml10">更新于 <label class="fc-link">{{this.blog.created}}</label> </small>
+                    <small class="ml10">更新于 <label class="fc-link">{{this.blog.created.substr(0,10)}}</label> </small>
                   </p>
                 </aside>
                 <div class="time mt10" style="padding-bottom:0;">
@@ -230,6 +230,7 @@ export default {
   },
   methods:{
     remove(id){
+      this.isLoad=true;
       this.$http.get("/deleteBlog/"+id,{
         headers: {
           "Authorization": localStorage.getItem("token")
@@ -241,6 +242,7 @@ export default {
             this.$router.push("/blogs")
           }
         });
+
       })
     },
     removeComment(id,blogId){
@@ -249,11 +251,13 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
+        this.isLoad=true;
         this.$http.get("/comment/deleteById?id="+id+"&blog_id="+blogId,{
           headers: {
             "Authorization": localStorage.getItem("token")
           }
         }).then(res=>{
+          this.isLoad=false;
           this.$message({
             type: 'success',
             message: '删除成功!',
@@ -284,7 +288,9 @@ export default {
           this.comment.content=this.textarea;
           this.comment.user_id=this.$store.getters.getUser.id;
           this.comment.blog_id=this.$route.params.blogId;
+          this.isLoad=true;
           this.$http.post("/comment/addComment",this.comment).then(res=>{
+            this.isLoad=false;
             this.$alert('评论成功', '提示', {
               confirmButtonText: '确定',
               callback: action => {
@@ -317,9 +323,9 @@ export default {
         console.log(this.blog)
         this.isLoad=false;
       })
-      // if(this.$store.getters.getUser.id!=null){
-      //   this.Login_id=this.$store.getters.getUser.id;
-      // }
+      if(this.$store.getters.getUser.id!=null){
+        this.Login_id=this.$store.getters.getUser.id;
+      }
     },
     handleClose(done) {
       this.dialogVisible=false;

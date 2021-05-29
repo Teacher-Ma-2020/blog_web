@@ -234,9 +234,7 @@ export default {
             type: 'warning',
             offset: 100
           });
-
         }
-
         this.currentPage = res.data.data.current;
         this.total = res.data.data.total;
         this.pageSize = res.data.data.size;
@@ -275,6 +273,7 @@ export default {
     this.page(1)
     this.$http.get("/user/getAll").then(res=>{
       this.users=res.data.data;
+
     });
     this.$http.get("/getHot").then(res=>{
       this.blogHot=res.data.data;

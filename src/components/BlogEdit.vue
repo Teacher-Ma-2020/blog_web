@@ -243,7 +243,6 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          console.log(this.ruleForm)
           this.$http.post("/blog/edit",this.ruleForm,{
             headers: {
               "Authorization": localStorage.getItem("token")
@@ -306,8 +305,10 @@ export default {
         this.ruleForm.title=blog.title;
         this.ruleForm.description=blog.description;
         this.ruleForm.content=blog.content;
+        console.log(blog)
         this.value=blog.avatar;
         this.dynamicTags=blog.dynamicTags;
+
       })
     }
   }

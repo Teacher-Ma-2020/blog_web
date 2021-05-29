@@ -54,7 +54,7 @@
                 </span>
               <ul>
                 <li>前 端 ：<code>Vue + Element-UI + Axios + Layui + Bootstrap</code> &nbsp;感谢<code><a href="https://gitee.com/yssgit" target="_blank" style="color: #BD4147">燕十三</a></code>提供的静态页面</li>
-                <li>后 端 ：<code>SpringBoot  + Shiro + Jwt + MYSQL + MybatisPlus + Druid </code></li>
+                <li>后 端 ：<code>SpringBoot  + Redis + Shiro + Jwt + MYSQL + MybatisPlus + Druid </code></li>
               </ul>
               <p>
                 本站采用<code>阿里云ESC服务器</code>以及<code>Nginx</code>进行部署。

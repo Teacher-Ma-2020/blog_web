@@ -18,11 +18,9 @@
             <div class="other">
               无法登陆？<a @click.prevent="resetForm('ruleForm')" href="#">去注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  href="userPassword">找回密码</a>
             </div>
-
         </el-form>
       </div>
     </div>
-    <p></p>
 
   </div>
 </template>
@@ -54,7 +52,6 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.isLoad=true;
           this.$http.post("/login",this.ruleForm).then(res=>{
             const jwt=res.headers['authorization'];
             const userInfo=res.data.data;
@@ -65,7 +62,6 @@ export default {
             if(this.$store.getters.getUser!=null){
               this.$router.push("/blogsAll")
             }
-            this.isLoad=false;
           })
         } else {
           console.log('error submit!!');
