@@ -15,6 +15,14 @@
                 <ul>
                   <li>
                     <div class="h4 animated fadeInLeft">
+                      <p class="date">2021-05-26</p>
+                    </div>
+                    <p class="dot-circle animated"><i class="fa fa-dot-circle-o"></i></p>
+                    <div class="content animated fadeInRight re"><p style="text-align: left;">加入redis缓存</p></div>
+                    <div class="clear"></div>
+                  </li>
+                  <li>
+                    <div class="h4 animated fadeInLeft">
                       <p class="date">2021-05-21</p>
                     </div>
                     <p class="dot-circle animated"><i class="fa fa-dot-circle-o"></i></p>

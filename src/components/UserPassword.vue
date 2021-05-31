@@ -98,7 +98,6 @@ export default {
           this.$http.get("/email/check/"+this.ruleForm.email+"/"+this.ruleForm.emailNum).then(res=>{
             if(res.data.data){
               this.$http.post("user/updatePassword",this.ruleForm).then(res=>{
-                console.log(res);
                 this.$alert('修改成功', '提示', {
                   confirmButtonText: '确定',
                   callback: action => {

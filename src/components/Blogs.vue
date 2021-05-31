@@ -19,7 +19,6 @@
       <div class="col-content" >
         <center >
           <el-dialog
-            style="min-width: 250px;"
             title=""
             :visible.sync="dialogVisible"
             width="25%"
@@ -258,6 +257,7 @@ export default {
       this.dialogVisible=false;
     },
     open(id){
+      console.log(id)
       this.isLoad=true;
       this.dialogVisible=true;
       this.$http.get("/user/findName/"+id).then(res=>{
@@ -273,13 +273,18 @@ export default {
     this.page(1)
     this.$http.get("/user/getAll").then(res=>{
       this.users=res.data.data;
-
     });
     this.$http.get("/getHot").then(res=>{
       this.blogHot=res.data.data;
     });
     if (this.$store.getters.getUser!==null){
       this.userID=this.$store.getters.getUser.id;
+    }
+    if (this.$route.query.code!=null){
+      let code=this.$route.query.code;
+      this.$http.get("https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=101954538&client_secret=49bf09c2bd3bbff286b50f89334529eb&redirect_uri=http://18163126.top/blogsAll&fmt=json&code="+code).then(res=>{
+        console.log(res.data)
+      });
     }
   },
 

@@ -25,6 +25,7 @@ module.exports = {
     'vue-router': 'VueRouter',
     'element-ui': 'ELEMENT',
     'echarts': 'echarts',
+    'highlight':'highlight'
   },
   context: path.resolve(__dirname, '../'),
   entry: {

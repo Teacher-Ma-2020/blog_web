@@ -18,7 +18,7 @@
             <div class="other">
               无法登陆？<a @click.prevent="resetForm('ruleForm')" href="#">去注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  href="userPassword">找回密码</a>
             </div>
-        </el-form>
+          </el-form>
       </div>
     </div>
 
@@ -75,14 +75,6 @@ export default {
     button(){
       this.$router.push("/blogs")
     }
-  },
-  created() {
-    this.$notify({
-      title: '提示',
-      message: '请先登陆~',
-      type: 'warning',
-      offset: 100
-    });
   }
 }
 </script>

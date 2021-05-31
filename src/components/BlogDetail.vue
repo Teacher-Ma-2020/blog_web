@@ -53,9 +53,8 @@
                   <p class="fc-grey fs-14" style="font-size: 18px">
                     <small>
                       作者：<a href="javascript:void(0)" @click="open(ruleForm.userId)" class="fc-link">{{this.ruleForm.userName}}</a>
-                    </small>
-                    <small class="ml10">围观群众：<i class="readcount fc-link">{{this.blog.view}}</i></small>
-                    <small class="ml10">更新于 <label class="fc-link">{{this.blog.created.substr(0,10)}}</label> </small>
+                    </small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <small class="ml10" >更新于 <label class="fc-link">{{this.blog.created.substr(0,10)}}</label> </small>
                   </p>
                 </aside>
                 <div class="time mt10" style="padding-bottom:0;">

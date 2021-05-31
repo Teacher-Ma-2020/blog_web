@@ -24,7 +24,7 @@
                   :on-change="handleChange"
                   class="upload-demo"
                   :file-list="fileList"
-                  action="http://121.43.55.23:8082/file/upload"
+                  action="http://121.43.55.23:8081/file/upload"
                   :before-upload="beforeAvatarUpload"
                 >
                   <el-button size="small" style="text-align: left;position: relative;bottom: 40px" type="primary">自定义上传头像</el-button>
@@ -322,12 +322,14 @@ export default {
       this.fileList = [file]
       if (fileList[0].response!=null){
         this.ruleForm.avatar="http://18163126.top:8080/img/"+fileList[0].response.data;
-        this.$notify({
-          title: '',
-          message: '头像上传成功',
-          type: 'success',
-          offset: 100
-        });
+        if (fileList.length<2){
+          this.$notify({
+            title: '头像上传成功',
+            message: '请稍等加载',
+            type: 'success',
+            offset: 100
+          });
+        }
       }
     },
   },

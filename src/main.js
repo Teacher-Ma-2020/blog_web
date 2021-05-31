@@ -16,9 +16,10 @@ import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import './permission.js' // 路由拦截
 
-import thljs from 'highlight.js';
+// import thljs from 'highlight.js';
 
-import 'highlight.js/styles/atom-one-dark.css' //样式
+// import 'highlight.js/styles/atom-one-dark.css' //样式
+
 
 Vue.use(mavonEditor)
 // use
@@ -31,13 +32,9 @@ Vue.config.productionTip = false
 
 
 Vue.directive('highlight',function(el){
-
   let blocks = el.querySelectorAll('pre code');
-
   blocks.forEach((block)=>{
-
     hljs.highlightBlock(block)
-
   })
 
 })

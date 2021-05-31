@@ -196,6 +196,12 @@ export default {
     about(){
       this.$router.push("/about")
     }
+  },
+  created () {
+    let loading = document.getElementById('Loading')
+    if (loading != null) {
+      document.body.removeChild(loading);
+    }
   }
 }
 </script>
@@ -206,7 +212,5 @@ export default {
 @import "../../static/html/font-awesome/css/font-awesome.min.css";
 @import "../../static/html/css/index_style.css";
 @import "../../static/html/css/animate.min.css";
-
-
 
 </style>
